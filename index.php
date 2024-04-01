@@ -73,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </main>
 
    <script>
+        const URL = "http://localhost/Todo-Heaven/";
         const submitButton = document.querySelector("#submit-button");
         submitButton.addEventListener("click", (e) => {
             e.preventDefault()
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
 
         async function login(formData) {
-            const res = await fetch("http://localhost/basicCrud/", {
+            const res = await fetch(URL, {
                 method: "POST",
                 header: {
                     "Content-Type": "application/json"
@@ -93,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             const data = await res.json();
             if (data.success) {
-                window.location.href = "http://localhost/basicCrud/home.php";
+                window.location.href = URL + "home.php";
             } else {
                 showModal(data.message, () => {
                    const modal = document.querySelector(".modal");

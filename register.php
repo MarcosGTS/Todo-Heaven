@@ -99,6 +99,8 @@ if ($method == "POST"){
    </div>
 
    <script>
+        const URL = "http://localhost/Todo-Heaven/";
+
         const submitBtn = document.querySelector("#submit-btn");
         submitBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -116,7 +118,7 @@ if ($method == "POST"){
                 email: emailField.value,
             }
 
-            const res = await fetch("http://localhost/basicCrud/register.php", {
+            const res = await fetch(URL + "register.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -129,7 +131,7 @@ if ($method == "POST"){
 
             if (data.success) {
                 showModal(data.message, () => {
-                   window.location.href = "http://localhost/basicCrud";
+                   window.location.href = URL; 
                 })
             } else {
                 showModal(data.message, () => {

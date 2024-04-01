@@ -4,7 +4,7 @@ const addBtn = document.querySelector("#add-button");
 const todoListEl = document.querySelector("#todo-list");
 const logoutButton = document.querySelector("#logout-button");
 
-const URL = "http://localhost/basicCrud";
+const URL = "http://localhost/Todo-Heaven/";
 
 addBtn.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -29,7 +29,7 @@ async function refresh() {
 }
 
 async function addTodo(todo) {
-  const res = await fetch(URL + "/api.php", {
+  const res = await fetch(URL + "api.php", {
     method: "POST",
     body: JSON.stringify(todo),
     headers: {
@@ -42,7 +42,7 @@ async function addTodo(todo) {
 }
 
 async function getUserInfo() {
-  const res = await fetch(URL + "/api.php", {
+  const res = await fetch(URL + "api.php", {
     method: "GET",
   });
 
@@ -81,7 +81,7 @@ function renderTodoList(list, parentEl) {
 }
 
 async function removeTodo(id) {
-  const res = await fetch(URL + "/api.php", {
+  const res = await fetch(URL + "api.php", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -115,6 +115,6 @@ addBtn.addEventListener("click", (e) => {
 logoutButton.addEventListener("click", logout);
 
 async function logout() {
-  await fetch("http://localhost/basicCrud/logout.php");
-  window.location.href = "http://localhost/basicCrud/index.php";
+  await fetch(URL + "logout.php");
+  window.location.href = URL;
 }
